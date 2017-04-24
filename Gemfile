@@ -52,3 +52,4 @@ gem 'bcrypt', platforms: :ruby
 gem 'paperclip', '~> 5.1'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'searchkick', '~> 2.2', '>= 2.2.1'
+gem 'cancan', '~> 1.6', '>= 1.6.10'

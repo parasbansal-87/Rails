@@ -20,6 +20,7 @@ class MoviesController < ApplicationController
   # GET /movies/1
   # GET /movies/1.json
   def show
+    authorize! :update, @movie
     @reviews = Review.where(movie_id: @movie.id).order("created_at DESC")
   
    if @reviews.blank?
@@ -36,6 +37,7 @@ class MoviesController < ApplicationController
 
   # GET /movies/1/edit
   def edit
+    authorize! :update, @movie
   end
 
   # POST /movies

@@ -3,8 +3,11 @@
     <div class="row">
       <div class="col-md-4">
         <%= image_tag @movie.image.url(:medium) %>
+        <%= time_ago_in_words(@movie.created_at) %> ago by user_id =<%= @movie.user_id %>
+        <br>
         <div class="star-rating" data-score= <%= @avg_review %> ></div>
         <em><%= "#{@reviews.length} reviews" %></em>
+
         <div class="table-responsive">
           <table class="table">
             <tbody>
@@ -45,6 +48,8 @@
             <div class="reviews">
               <div class="star-rating" data-score= <%= review.rating %> ></div>
               <p><%= review.Comment %></p>
+              <%= link_to 'Edit', edit_movie_review_path(@movie) %> |
+              <%= link_to 'Destroy', @review, method: :delete, data: { confirm: 'Are you Sure'} %>
             </div>
           <% end %>
         <% end %>
@@ -52,9 +57,15 @@
   </div>
 </div>
 
+<% if can? :update, @movie %>
+  <%= link_to 'Edit', edit_movie_path(@movie) %> |
+<% end %>
 
-<%= link_to 'Edit', edit_movie_path(@movie) %> |
-<%= link_to 'Back', movies_path %>
+<%= link_to 'Back', movies_path %> |
+
+<% if can? :destroy, @movie %>
+  <%= link_to 'Destroy', @movie, method: :delete, data: { confirm: 'Are you Sure'} %>
+<% end %>
 
 <script>
     $('.star-rating').raty({
