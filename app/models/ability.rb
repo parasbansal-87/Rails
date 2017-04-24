@@ -3,31 +3,21 @@ class Ability
 
   #always gets current user
   def initialize(user)
-
-    if user.admin?
+    user ||= User.new
+    if user.admin
 
         can :manage, :all
 
     else
 
-        can :update, @movie do |movie|
-            movie.user == user
-        end
-
-        can :destroy, @movie do |movie|
-            movie.user == user
-        end
-
-        can :update, @review do |review|
-            review.user == user
-        end
-
-        can :destroy, @review do |review|
-            review.user == user
-        end
-
-        can :create, @movie
-        can :create, @review
+       can :read, Movie
+       can :read, Review
+       can :create, Movie
+       can :create, Review
+       can :update, Movie, id: Movie.where(user_id: user.id).pluck(:id)
+       can :destroy, Movie, id: Movie.where(user_id: user.id).pluck(:id)
+       can :update, Review, id: Review.where(user_id: user.id).pluck(:id)
+       can :destroy, Review, id: Review.where(user_id: user.id).pluck(:id)
 
 
     end

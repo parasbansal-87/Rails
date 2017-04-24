@@ -1,3 +1,4 @@
+
 <div class="panel panel-default">
   <div class="panel-body">
     <div class="row">
@@ -48,8 +49,13 @@
             <div class="reviews">
               <div class="star-rating" data-score= <%= review.rating %> ></div>
               <p><%= review.Comment %></p>
-              <%= link_to 'Edit', edit_movie_review_path(@movie) %> |
-              <%= link_to 'Destroy', @review, method: :delete, data: { confirm: 'Are you Sure'} %>
+              
+            <% if can? :update, review %>
+               <%= link_to 'Edit', edit_movie_review_path(@movie) %> |
+               <% end %>
+                 <% if can? :destroy, review %>
+                   <%= link_to 'Destroy', movie_review_path(@movie), method: :delete, data: { confirm: 'Are you Sure'} %>
+                     <% end %>
             </div>
           <% end %>
         <% end %>
