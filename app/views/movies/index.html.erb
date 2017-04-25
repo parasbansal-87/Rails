@@ -6,6 +6,21 @@
   </div>
 <% end %>
 
+<%= search_form_for @search do |f| %>
+    <div class="card-block", style='margin-bottom: 15px;'>
+      <div class="row">
+        <div class="col-lg-3 col-xl-3">
+          <%= f.select :rating_eq, [['PG', 0], ['U/A', 1], ['R', 2]].unshift(['select rating', '']), {}, class: 'form-control'%>
+        </div>
+        <div class="col-lg-3 col-xl-3">
+          <button type="submit" class="btn btn-success btn-sm"><%= "<i class='fa fa-search'></i> Search".html_safe %>
+          </button>
+          <%= link_to "<i class='fa fa-refresh'></i> Reset".html_safe, '', class: "btn btn-primary btn-sm" %>
+        </div>
+      </div>
+    </div>
+<% end %>
+
 <div class="row">
   <% @movies.each do |movie| %>
     <div class="col-sm-6 col-md-3">
