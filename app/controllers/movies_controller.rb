@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show]
   # GET /movies
   # GET /movies.json
   
@@ -14,7 +14,7 @@ class MoviesController < ApplicationController
 
 
   def index
-    @movies = Movie.all
+    @movies = Movie.all.page(params[:page]).per(5)
   end
 
   # GET /movies/1
