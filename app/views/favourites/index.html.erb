@@ -1,0 +1,19 @@
+<% if @favourite_movies.blank? %>
+  <p>No movies added to favourites !</p>
+<% else %>
+  <div class="row">
+    <% @favourite_movies.each do |movie| %>
+        <div class="col-sm-6 col-md-3">
+          <div class="thumbnail">
+            <%= link_to (image_tag movie.image.url(:medium), class: 'image'), movie %>
+          </div>
+          <div class="caption">
+            <%= link_to "Remove from favourites",
+                        movie_remove_favourite_path(movie), method: :delete, class: 'btn btn-primary' %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+<% end %>
+
+<%= paginate @favourite_movies %>

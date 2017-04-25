@@ -34,7 +34,12 @@
               </tr>
             </tbody>
           </table>
-          <%= link_to "Write a Review", new_movie_review_path(@movie) %>
+          <div class="pull-left">
+            <%= link_to "Write a Review", new_movie_review_path(@movie), class: 'btn btn-primary btn-sm' %>
+          </div>
+          <div class="pull-right">
+            <%= link_to "Add to favourites", movie_favourites_path(@movie), method: :post, class: 'btn btn-success btn-sm' %>
+          </div>
         </div>
       </div>
       <div class="col-md-7 col-md-offset-1">
@@ -52,10 +57,10 @@
               
             <% if can? :update, review %>
                <%= link_to 'Edit', edit_movie_review_path(@movie) %> |
-               <% end %>
-                 <% if can? :destroy, review %>
-                   <%= link_to 'Destroy', movie_review_path(@movie), method: :delete, data: { confirm: 'Are you Sure'} %>
-                     <% end %>
+             <% end %>
+             <% if can? :destroy, review %>
+               <%= link_to 'Destroy', movie_review_path(@movie), method: :delete, data: { confirm: 'Are you Sure'} %>
+             <% end %>
             </div>
           <% end %>
         <% end %>
