@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/1/edit
   def edit
-    authorize! :update, @review
+   
   end
 
   # POST /reviews

@@ -55,6 +55,7 @@
               <div class="star-rating" data-score= <%= review.rating %> ></div>
               <p><%= review.Comment %></p>
               
+              
             <% if can? :update, review %>
                <%= link_to 'Edit', edit_movie_review_path(@movie) %> |
              <% end %>

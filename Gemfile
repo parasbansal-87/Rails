@@ -34,7 +34,7 @@ gem 'jbuilder', '~> 2.5'
 # for pagination
 gem 'kaminari'
 # for filter
-gem 'ransack'
+#gem 'ransack'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -57,3 +57,4 @@ gem 'paperclip', '~> 5.1'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'searchkick', '~> 2.2', '>= 2.2.1'
 gem 'cancan', '~> 1.6', '>= 1.6.10'
+gem 'ransack', '~> 1.8', '>= 1.8.2'

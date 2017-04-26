@@ -15,7 +15,8 @@ class MoviesController < ApplicationController
 
   def index
     @search = Movie.ransack(params[:q])
-    @movies = @search.result.page(params[:page]).per(5)
+    @movies = @search.result.page(params[:page]).per(3)
+    #@movies = Movies.all
   end
 
   # GET /movies/1
